@@ -1,0 +1,30 @@
+[project]
+name = "industrial-smoke-fire-detection"
+version = "0.1.0"
+description = "Industrial smoke and fire detection pipeline"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "ultralytics>=8.3.0",
+    "opencv-python>=4.10.0",
+    "pyyaml>=6.0.2",
+    "requests>=2.32.0",
+    "numpy>=1.26.0",
+    "onnx>=1.16.0",
+    "onnxruntime>=1.19.0",
+    "scipy>=1.17.1",
+    "pandas>=3.1.1",
+    "seaborn>=0.13.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
