@@ -1,0 +1,45 @@
+detector:
+  model_path: "yolov8n.pt"
+  conf_threshold: 0.25
+  iou_threshold: 0.45
+  img_size: 640
+  device: "auto"
+  classes:
+    0: "smoke"
+    1: "fire"
+
+temporal_filter:
+  queue_size: 15
+  min_hits: 4
+  optical_flow_enabled: true
+  min_motion_magnitude: 0.5
+  vertical_bias_weight: 0.6
+  radial_expansion_weight: 0.4
+  optical_flow_mode: "roi"
+
+camera_motion:
+  camera_mode: "auto"
+  min_inlier_ratio: 0.40
+  window_size: 15
+  dynamic_threshold: 2.5
+  static_threshold: 1.0
+
+risk_analyzer:
+  derivative_interval_sec: 1.0
+  warning_growth_rate: 0.30
+  critical_growth_rate: 1.50
+  critical_area_ratio: 0.15
+  cooldown_frames: 30
+
+alert_connector:
+  enabled: true
+  webhook_url: "http://localhost:8080/api/v1/alerts"
+  request_timeout_sec: 3.0
+  cooldown_seconds: 10.0
+  simulate_only: true
+
+pipeline:
+  display: false
+  save_output: true
+  output_dir: "output"
+  target_fps: 30
